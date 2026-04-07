@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — Kango Construction</title>
+    <meta name="description" content="Kango Construction Terms of Use — the terms governing your use of our construction management platform.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --slate-950: #0a0f1a;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-600: #475569;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --amber-500: #f59e0b;
+            --amber-400: #fbbf24;
+            --white: #f8fafc;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--slate-950);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+                linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            pointer-events: none;
+        }
+
+        .noise {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px;
+        }
+
+        .accent-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--amber-500), var(--amber-400), var(--amber-500));
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            padding: 2.5rem 2rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--slate-400);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: var(--amber-400);
+        }
+
+        header .bar {
+            width: 3px;
+            height: 28px;
+            background: var(--amber-500);
+            border-radius: 2px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 .highlight {
+            background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .effective-date {
+            color: var(--slate-400);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--amber-400);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: var(--slate-300);
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            color: var(--slate-300);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.4rem;
+        }
+
+        a {
+            color: var(--amber-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--amber-500);
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--slate-800);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--slate-400);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--amber-400);
+        }
+
+        .footer-copy {
+            color: var(--slate-600);
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="noise"></div>
+    <div class="accent-bar"></div>
+
+    <header>
+        <a href="/">
+            <div class="bar"></div>
+            <span>Kango Construction</span>
+        </a>
+    </header>
+
+    <main class="container">
+        <h1>Terms of <span class="highlight">Use</span></h1>
+        <p class="effective-date">Effective Date: April 2026</p>
+
+        <p>These Terms of Use ("Terms") govern your access to and use of the Kango Construction platform ("Service"), operated by Kango Construction ("we," "us," or "our"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+
+        <h2>1. Description of Service</h2>
+        <p>Kango Construction is a cloud-based construction management platform that provides tools for managing budgets, bid packages, commitments, change orders, vendor invoices, customer billing, daily reports, schedules, documents, e-signatures, RFIs, submittals, and related construction workflows.</p>
+
+        <h2>2. Account Responsibilities</h2>
+        <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. If you are an account administrator, you are responsible for the actions of all users you invite to your organization.</p>
+        <p>You agree to notify us immediately of any unauthorized use of your account.</p>
+
+        <h2>3. Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+            <li>Use the Service for any illegal or unauthorized purpose</li>
+            <li>Attempt to gain unauthorized access to the Service, other accounts, or our systems</li>
+            <li>Scrape, crawl, or use automated means to access the Service without our consent</li>
+            <li>Transmit viruses, malware, or other harmful code</li>
+            <li>Interfere with the proper functioning of the Service</li>
+            <li>Use the Service to store or transmit content that infringes on intellectual property rights</li>
+        </ul>
+
+        <h2>4. Intellectual Property</h2>
+        <p>The Service, including its design, code, features, and documentation, is owned by Kango Construction and protected by applicable intellectual property laws. You may not copy, modify, distribute, or reverse-engineer any part of the Service.</p>
+
+        <h2>5. Customer Data</h2>
+        <p>You retain all ownership rights to the data you upload, enter, or generate through the Service ("Customer Data"). By using the Service, you grant us a limited, non-exclusive license to host, process, and display your Customer Data solely for the purpose of providing the Service to you.</p>
+        <p>We will not access, use, or share your Customer Data except as necessary to provide the Service, comply with the law, or as otherwise described in our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+        <h2>6. Third-Party Integrations</h2>
+        <p>The Service may integrate with third-party services such as Google, DocuSign, DocuSeal, QuickBooks, and others. Your use of these integrations is at your discretion and subject to those providers' respective terms and conditions. We are not responsible for the practices or content of third-party services.</p>
+
+        <h2>7. Payment Terms</h2>
+        <p>If applicable, access to the Service is provided on a subscription basis. Payment terms, pricing, and billing cycles will be communicated to you at the time of subscription. Failure to pay may result in suspension or termination of your access.</p>
+
+        <h2>8. Availability</h2>
+        <p>We strive to maintain high availability of the Service but do not guarantee uninterrupted access. The Service may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control. We will make reasonable efforts to notify you of planned downtime.</p>
+
+        <h2>9. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Kango Construction shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, data, or business opportunities arising from your use of or inability to use the Service.</p>
+        <p>Our total aggregate liability for any claims related to the Service shall not exceed the amount you paid us in the twelve (12) months preceding the claim.</p>
+
+        <h2>10. Indemnification</h2>
+        <p>You agree to indemnify and hold harmless Kango Construction, its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including reasonable legal fees) arising from your use of the Service, your violation of these Terms, or your infringement of any third-party rights.</p>
+
+        <h2>11. Termination</h2>
+        <p>Either party may terminate the use of the Service at any time. Upon termination, you may request an export of your Customer Data within 30 days. After 30 days, we may delete your data in accordance with our <a href="/privacy.html">Privacy Policy</a>.</p>
+        <p>We reserve the right to suspend or terminate your access if you violate these Terms.</p>
+
+        <h2>12. Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the State of Arizona, without regard to its conflict of law provisions.</p>
+
+        <h2>13. Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. If we make material changes, we will notify you via email at the address associated with your account. Your continued use of the Service after such changes constitutes acceptance of the updated Terms.</p>
+
+        <h2>14. Contact Us</h2>
+        <p>If you have questions about these Terms, please contact us at:</p>
+        <p><a href="mailto:info@kangoconstruction.com">info@kangoconstruction.com</a></p>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Use</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Kango Construction. All rights reserved.</p>
+    </footer>
+</body>
+</html>
