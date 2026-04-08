@@ -3,349 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kango Construction — Coming Soon</title>
-    <meta name="description" content="Kango Construction — Construction management software built for the field. Coming soon.">
+    <title>Kango Construction — Construction Management Built for the Field</title>
+    <meta name="description" content="From budgets to daily reports, Kango gives general contractors one platform to manage every project. Financial, field, scheduling, safety, and more.">
+    <meta property="og:title" content="Kango Construction — Construction Management Built for the Field">
+    <meta property="og:description" content="From budgets to daily reports, Kango gives general contractors one platform to manage every project. Financial, field, scheduling, safety, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kangoconstruction.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --slate-950: #0a0f1a;
-            --slate-900: #0f172a;
-            --slate-800: #1e293b;
-            --slate-600: #475569;
-            --slate-400: #94a3b8;
-            --slate-300: #cbd5e1;
-            --amber-500: #f59e0b;
-            --amber-400: #fbbf24;
-            --white: #f8fafc;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--slate-950);
-            color: var(--white);
-            overflow: hidden;
-        }
-
-        .page {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            min-height: 100dvh;
-            position: relative;
-            padding: 2rem;
-        }
-
-        /* Blueprint grid background */
-        .grid-bg {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-                linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
-            background-size:
-                100px 100px,
-                100px 100px,
-                20px 20px,
-                20px 20px;
-            animation: gridFade 2s ease-out forwards;
-        }
-
-        @keyframes gridFade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Amber accent line at top */
-        .accent-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--amber-500), var(--amber-400), var(--amber-500));
-            animation: barGrow 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            width: 0;
-        }
-
-        @keyframes barGrow {
-            to { width: 100%; }
-        }
-
-        /* Corner marks — architectural drawing style */
-        .corner-mark {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            opacity: 0;
-            animation: cornerIn 0.6s ease-out forwards;
-        }
-        .corner-mark::before,
-        .corner-mark::after {
-            content: '';
-            position: absolute;
-            background: var(--slate-600);
-        }
-        .corner-mark::before {
-            width: 1px;
-            height: 100%;
-        }
-        .corner-mark::after {
-            width: 100%;
-            height: 1px;
-        }
-        .corner-mark.tl { top: 24px; left: 24px; animation-delay: 0.8s; }
-        .corner-mark.tl::before { left: 0; top: 0; }
-        .corner-mark.tl::after { left: 0; top: 0; }
-        .corner-mark.tr { top: 24px; right: 24px; animation-delay: 0.9s; }
-        .corner-mark.tr::before { right: 0; top: 0; }
-        .corner-mark.tr::after { right: 0; top: 0; }
-        .corner-mark.bl { bottom: 24px; left: 24px; animation-delay: 1.0s; }
-        .corner-mark.bl::before { left: 0; bottom: 0; }
-        .corner-mark.bl::after { left: 0; bottom: 0; }
-        .corner-mark.br { bottom: 24px; right: 24px; animation-delay: 1.1s; }
-        .corner-mark.br::before { right: 0; bottom: 0; }
-        .corner-mark.br::after { right: 0; bottom: 0; }
-
-        @keyframes cornerIn {
-            to { opacity: 1; }
-        }
-
-        .content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            max-width: 640px;
-        }
-
-        .logo-mark {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-        }
-
-        .logo-mark .bar {
-            width: 3px;
-            height: 28px;
-            background: var(--amber-500);
-            border-radius: 2px;
-        }
-
-        .logo-mark span {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--slate-400);
-        }
-
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
-        }
-
-        h1 .highlight {
-            background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: var(--slate-400);
-            max-width: 480px;
-            margin: 0 auto 3rem;
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
-        }
-
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.2rem;
-            background: var(--slate-900);
-            border: 1px solid var(--slate-800);
-            border-radius: 100px;
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
-        }
-
-        .status .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--amber-500);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-            50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
-        }
-
-        .status span {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--slate-300);
-        }
-
-        .app-link {
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
-        }
-
-        .app-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.04em;
-            color: var(--slate-950);
-            background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
-            padding: 0.75rem 1.75rem;
-            border-radius: 100px;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .app-link a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);
-        }
-
-        .app-link a svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .contact {
-            opacity: 0;
-            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.3s forwards;
-        }
-
-        .contact a {
-            color: var(--slate-400);
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 2px;
-        }
-
-        .contact a:hover {
-            color: var(--amber-400);
-            border-bottom-color: var(--amber-400);
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Subtle noise overlay */
-        .noise {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 256px;
-        }
-
-        @media (max-width: 480px) {
-            .corner-mark { display: none; }
-            .content { padding: 0 0.5rem; }
-            .tagline { font-size: 1rem; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="grid-bg"></div>
     <div class="noise"></div>
+    <div class="grid-bg"></div>
+
+    <!-- Nav -->
     <div class="accent-bar"></div>
-
-    <div class="corner-mark tl"></div>
-    <div class="corner-mark tr"></div>
-    <div class="corner-mark bl"></div>
-    <div class="corner-mark br"></div>
-
-    <main class="page">
-        <div class="content">
-            <div class="logo-mark">
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
                 <div class="bar"></div>
                 <span>Kango Construction</span>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">Features <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="/features/financial.html">Financial</a></li>
+                        <li><a href="/features/field.html">Field</a></li>
+                        <li><a href="/features/project-management.html">Project Management</a></li>
+                        <li><a href="/features/safety.html">Safety</a></li>
+                        <li><a href="/features/companies.html">Companies</a></li>
+                        <li><a href="/features/more.html">More Features</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pricing.html">Pricing</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="https://app.kangoconstruction.com" class="btn-signin">Sign In</a>
+                <a href="https://app.kangoconstruction.com" class="btn btn-primary">Get Started</a>
             </div>
+            <button class="nav-toggle" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+    <!-- Mobile nav -->
+    <div class="nav-mobile">
+        <button class="nav-mobile-close" aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <a href="/features/financial.html">Financial</a>
+        <a href="/features/field.html">Field</a>
+        <a href="/features/project-management.html">Project Management</a>
+        <a href="/features/safety.html">Safety</a>
+        <a href="/features/companies.html">Companies</a>
+        <a href="/features/more.html">More Features</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="https://app.kangoconstruction.com">Sign In</a>
+        <a href="https://app.kangoconstruction.com" class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Get Started</a>
+    </div>
 
-            <h1>Building<br><span class="highlight">Smarter</span></h1>
-
-            <p class="tagline">
-                Construction management software built for the field.
-                Budgets, bids, daily reports, and schedules — all in one place.
-            </p>
-
-            <div class="status">
-                <div class="dot"></div>
-                <span>Coming Soon</span>
+    <!-- 1. Hero -->
+    <section class="hero fade-up">
+        <div class="hero-content">
+            <h1>Construction Management Built for the Field</h1>
+            <p class="hero-sub">From budgets to daily reports, Kango gives general contractors one platform to manage every project.</p>
+            <div class="hero-ctas">
+                <a href="https://app.kangoconstruction.com" class="btn btn-primary">Get Started</a>
+                <a href="/features/financial.html" class="btn btn-secondary">See Features</a>
             </div>
+        </div>
+        <div class="hero-media">
+            <div class="screenshot-frame">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <span class="label">Dashboard View</span>
+            </div>
+        </div>
+    </section>
 
-            <div class="app-link">
-                <a href="https://app.kangoconstruction.com">
-                    Go to App
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <!-- 2. Differentiator Bar -->
+    <section class="diff-bar fade-up">
+        <div class="diff-item">
+            <div class="diff-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+            </div>
+            <h3>All-in-One Platform</h3>
+            <p>Every module, one login</p>
+        </div>
+        <div class="diff-item">
+            <div class="diff-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </div>
+            <h3>QuickBooks Integrated</h3>
+            <p>Sync vendors, invoices, payments</p>
+        </div>
+        <div class="diff-item">
+            <div class="diff-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 15V5.5a2.5 2.5 0 1 1 5 0V15"/></svg>
+            </div>
+            <h3>Built for GCs</h3>
+            <p>Designed for general contractors</p>
+        </div>
+        <div class="diff-item">
+            <div class="diff-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>No Per-User Pricing</h3>
+            <p>Your whole team, one price</p>
+        </div>
+    </section>
+
+    <!-- 3. Module Grid -->
+    <section class="section fade-up">
+        <div class="section-header">
+            <h2>Everything You Need</h2>
+        </div>
+        <div class="card-grid">
+            <a href="/features/financial.html" class="feature-card fade-up">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>Financial</h3>
+                <p>Budget, Bids, Commitments, Change Orders, Vendor Invoices, Customer Billing, and QuickBooks sync.</p>
+            </a>
+            <a href="/features/field.html" class="feature-card fade-up">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                </div>
+                <h3>Field</h3>
+                <p>Documents, Plans & Markups, Daily Reports, Photos, Hot Work Permits.</p>
+            </a>
+            <a href="/features/project-management.html" class="feature-card fade-up">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <h3>Project Management</h3>
+                <p>Custom Gantt Chart, Calendar, RFIs, Submittals.</p>
+            </a>
+            <a href="/features/safety.html" class="feature-card fade-up">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Safety</h3>
+                <p>Inspections, Incidents, Toolbox Talks, Observations, Training.</p>
+            </a>
+            <a href="/features/companies.html" class="feature-card fade-up">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                </div>
+                <h3>Companies</h3>
+                <p>Vendors, Customers, Consultants, Contacts, Trades.</p>
+            </a>
+            <a href="/features/more.html" class="feature-card fade-up">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </div>
+                <h3>More</h3>
+                <p>Meeting Minutes, Punch List, Directives, Vault, E-Sign, Permissions.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- 4. Everything Connects -->
+    <section class="callout fade-up">
+        <div class="callout-content">
+            <h2>Your Modules Work Together</h2>
+            <p>Change orders automatically update budgets. RFIs pin directly to plan sheets. The calendar aggregates deadlines from every module. Nothing falls through the cracks.</p>
+            <div class="callout-items">
+                <div class="callout-item">Budget &#8596; Change Orders</div>
+                <div class="callout-item">RFIs &#8596; Plan Markups</div>
+                <div class="callout-item">Calendar &#8596; All Modules</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Feature Spotlight: Financial -->
+    <section class="section two-col fade-up">
+        <div class="two-col-content">
+            <h2>Financial Management That Actually Works</h2>
+            <p>Track every dollar from bid to final billing. Kango's financial module covers the complete lifecycle — budgets, bid packages, commitments, change orders, vendor invoices, customer billing with AIA G702/G703, and QuickBooks sync.</p>
+            <ul class="feature-list">
+                <li>Budget editor with real-time tracking</li>
+                <li>7-step commitment wizard</li>
+                <li>Automated AIA billing schedules</li>
+                <li>Two-way QuickBooks sync</li>
+            </ul>
+            <a href="/features/financial.html" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="two-col-media">
+            <div class="screenshot-frame">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <span class="label">Budget Overview</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Feature Spotlight: Field -->
+    <section class="section two-col reverse alt-bg fade-up">
+        <div class="two-col-content">
+            <h2>Field Tools Your Team Will Actually Use</h2>
+            <p>Fieldwire-style plan markups, weather-auto-fetch daily reports, organized document management, and photo logs — all accessible from any device.</p>
+            <ul class="feature-list">
+                <li>Pin markups directly on plan sheets</li>
+                <li>Auto-fetch weather for daily reports</li>
+                <li>Organize documents by category</li>
+                <li>Photo logs with geolocation</li>
+            </ul>
+            <a href="/features/field.html" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="two-col-media">
+            <div class="screenshot-frame">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <span class="label">Plan Markups</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Feature Spotlight: Project Management -->
+    <section class="section two-col fade-up">
+        <div class="two-col-content">
+            <h2>Schedules That Keep Projects on Track</h2>
+            <p>A custom-built Gantt chart with auto-cascading dates, MS Project import, and a cross-module calendar that aggregates deadlines from every corner of your project.</p>
+            <ul class="feature-list">
+                <li>Auto-cascade scheduling</li>
+                <li>MS Project import/export</li>
+                <li>RFI tracking with plan placement</li>
+                <li>Submittal workflow management</li>
+            </ul>
+            <a href="/features/project-management.html" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="two-col-media">
+            <div class="screenshot-frame">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <span class="label">Gantt Chart</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Public Sharing Callout -->
+    <section class="callout alt-bg fade-up">
+        <div class="callout-content">
+            <h2>Share Without the Login Wall</h2>
+            <p>Generate public share links for RFIs, submittals, meeting minutes, and more. Subs and consultants see exactly what they need — no account required.</p>
+            <div class="callout-items">
+                <div class="callout-item">Public RFI links</div>
+                <div class="callout-item">Shareable submittals</div>
+                <div class="callout-item">Meeting minutes distribution</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Integrations Row -->
+    <section class="section fade-up">
+        <div class="section-header">
+            <h2>Connects to Your Tools</h2>
+        </div>
+        <div class="integrations">
+            <div class="int-item">
+                <div class="int-icon">QB</div>
+                <span>QuickBooks</span>
+            </div>
+            <div class="int-item">
+                <div class="int-icon">GC</div>
+                <span>Google Calendar</span>
+            </div>
+            <div class="int-item">
+                <div class="int-icon">DS</div>
+                <span>DocuSeal</span>
+            </div>
+            <div class="int-item">
+                <div class="int-icon">MP</div>
+                <span>MS Project</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Final CTA -->
+    <section class="cta-section fade-up">
+        <h2>Ready to Build Smarter?</h2>
+        <p>Join the general contractors who manage every project detail in one platform.</p>
+        <a href="https://app.kangoconstruction.com" class="btn btn-primary">Get Started Free</a>
+    </section>
+
+    <!-- 11. Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo">
+                    <div class="bar"></div>
+                    <span>Kango Construction</span>
                 </a>
+                <p>Construction management software built for the field. Budgets, schedules, daily reports, and more — all in one place.</p>
             </div>
-
+            <div class="footer-col">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="/features/financial.html">Financial</a></li>
+                    <li><a href="/features/field.html">Field</a></li>
+                    <li><a href="/features/project-management.html">Project Management</a></li>
+                    <li><a href="/features/safety.html">Safety</a></li>
+                    <li><a href="/features/companies.html">Companies</a></li>
+                    <li><a href="/features/more.html">More Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Use</a></li>
+                    <li><a href="mailto:info@kangoconstruction.com">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </main>
-
-    <footer style="position: relative; z-index: 1; border-top: 1px solid #1e293b; padding: 2rem; text-align: center;">
-        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-            <a href="/privacy.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: none; transition: color 0.3s ease;">Privacy Policy</a>
-            <a href="/terms.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: none; transition: color 0.3s ease;">Terms of Use</a>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kango Construction. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="/privacy.html">Privacy</a>
+                <a href="/terms.html">Terms</a>
+            </div>
         </div>
-        <p style="color: #475569; font-size: 0.8rem; margin-top: 0.75rem;">&copy; 2026 Kango Construction. All rights reserved.</p>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
