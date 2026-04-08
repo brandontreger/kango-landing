@@ -26,6 +26,7 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -34,6 +35,12 @@ body {
     color: var(--white);
     line-height: 1.7;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Blueprint grid background */
@@ -294,6 +301,11 @@ section.alt-bg {
     cursor: pointer;
     padding: 0.5rem;
     color: var(--slate-400);
+    -webkit-tap-highlight-color: transparent;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-toggle svg {
@@ -1439,8 +1451,9 @@ section.alt-bg {
 }
 
 @media (max-width: 768px) {
+    /* Hide desktop nav, show hamburger */
     .nav-links,
-    .nav-cta .btn-signin {
+    .nav-cta {
         display: none;
     }
 
@@ -1455,14 +1468,18 @@ section.alt-bg {
         left: 0;
         right: 0;
         bottom: 0;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         background: var(--slate-950);
         z-index: 200;
         padding: 5rem 2rem 2rem;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0;
         transform: translateX(100%);
         transition: transform 0.3s ease;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-mobile.open {
@@ -1471,16 +1488,18 @@ section.alt-bg {
 
     .nav-mobile a {
         display: block;
-        padding: 0.75rem 0;
+        padding: 1rem 0;
         font-family: 'Outfit', sans-serif;
         font-weight: 500;
         font-size: 1.1rem;
         color: var(--slate-300);
         text-decoration: none;
         border-bottom: 1px solid var(--slate-800);
+        -webkit-tap-highlight-color: transparent;
     }
 
-    .nav-mobile a:hover {
+    .nav-mobile a:hover,
+    .nav-mobile a:active {
         color: var(--amber-400);
     }
 
@@ -1492,7 +1511,8 @@ section.alt-bg {
         border: none;
         color: var(--slate-400);
         cursor: pointer;
-        padding: 0.5rem;
+        padding: 0.75rem;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .nav-mobile-close svg {
@@ -1500,22 +1520,31 @@ section.alt-bg {
         height: 24px;
     }
 
+    /* Grids → single column */
     .two-col,
     .feature-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
     }
 
+    /* Reset reverse ordering so text always comes first */
     .two-col.reverse .two-col__content,
     .two-col.reverse .two-col-content,
+    .two-col.reverse .col-text,
     .feature-grid.reverse .feature-content {
         order: 1;
     }
 
     .two-col.reverse .two-col__media,
     .two-col.reverse .two-col-media,
+    .two-col.reverse .col-media,
     .feature-grid.reverse .feature-visual {
         order: 2;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 7rem 0 2.5rem;
     }
 
     .hero-ctas {
@@ -1526,11 +1555,18 @@ section.alt-bg {
         justify-content: center;
     }
 
+    .feature-hero {
+        padding: 7rem 0 2.5rem;
+    }
+
+    /* Diff bar */
     .diff-bar {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+        padding: 2.5rem 1.5rem;
     }
 
+    /* Cards */
     .card-grid {
         grid-template-columns: 1fr;
     }
@@ -1539,14 +1575,28 @@ section.alt-bg {
         grid-template-columns: 1fr;
     }
 
-    .hero {
-        padding: 8rem 0 3rem;
+    /* Callout sections — add horizontal margin for border-radius */
+    .callout {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 2.5rem 1.5rem;
     }
 
-    .feature-hero {
-        padding: 8rem 0 3rem;
+    /* CTA section */
+    .cta-section {
+        padding: 3.5rem 1.5rem;
     }
 
+    /* Sections */
+    section {
+        padding: 3rem 0;
+    }
+
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    /* Footer */
     .footer-inner {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1558,18 +1608,58 @@ section.alt-bg {
         text-align: center;
     }
 
-    section {
-        padding: 3.5rem 0;
+    /* Pricing */
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .pricing-buttons {
+        flex-direction: column;
+    }
+
+    .pricing-buttons .btn {
+        justify-content: center;
+    }
+
+    /* Integrations */
+    .integrations {
+        gap: 2rem;
+    }
+
+    /* Containers */
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .container--narrow {
+        padding: 0 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .diff-bar {
         grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .hero {
+        padding: 6.5rem 0 2rem;
     }
 
     .hero h1 {
-        font-size: 2.25rem;
+        font-size: 2rem;
+    }
+
+    .hero-content {
+        padding: 0 1.25rem;
+    }
+
+    .hero-media {
+        padding: 0 1.25rem;
+    }
+
+    .feature-hero {
+        padding: 6.5rem 0 2rem;
     }
 
     .hero-buttons {
@@ -1581,15 +1671,73 @@ section.alt-bg {
     }
 
     .callout {
-        padding: 2rem 1.5rem;
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
     }
 
     .callout-items {
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
+    }
+
+    .section {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .cta-section {
+        padding: 3rem 1.25rem;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .container--narrow {
+        padding: 0 1.25rem;
     }
 
     .integrations {
-        gap: 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .int-item .int-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .pricing-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .pricing-price {
+        font-size: 2rem;
+    }
+
+    .nav-inner {
+        padding: 0 1.25rem;
+    }
+
+    .site-footer {
+        padding: 3rem 1.25rem 1.5rem;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .related-card {
+        padding: 1rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    section.alt-bg {
+        padding-left: 0;
+        padding-right: 0;
     }
 }

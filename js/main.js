@@ -27,20 +27,37 @@
 
     if (!toggle || !mobileNav) return;
 
-    toggle.addEventListener('click', () => {
+    function openNav() {
         mobileNav.classList.add('open');
         document.body.style.overflow = 'hidden';
-    });
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = '-' + window.scrollY + 'px';
+    }
 
     function closeNav() {
+        var scrollY = document.body.style.top;
         mobileNav.classList.remove('open');
         document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
+
+    toggle.addEventListener('click', openNav);
 
     if (closeBtn) closeBtn.addEventListener('click', closeNav);
 
     mobileNav.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', closeNav);
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+            closeNav();
+        }
     });
 })();
 
@@ -54,3 +71,12 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
         }
     });
 });
+
+// Set CSS custom property for mobile viewport height (accounts for browser chrome)
+(function () {
+    function setVh() {
+        document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+})();
